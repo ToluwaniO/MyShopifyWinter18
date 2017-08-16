@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyShopify</string>
+    <string name="customer_name">CUSTOMER NAME</string>
+    <string name="customer_total">0.0</string>
+</resources>

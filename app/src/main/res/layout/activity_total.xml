@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="customer"
+            type="com.tpad.myshopify.NameTotal" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.tpad.myshopify.TotalActivity">
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="71dp"
+            tools:text="@string/customer_name"
+            android:text="@{customer.name}"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/customer_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customer_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp"
+            android:text="@{Double.toString(customer.total)}"
+            android:textSize="36sp"
+            tools:text="@string/customer_total" />
+    </RelativeLayout>
+</layout>
