@@ -1,10 +1,16 @@
 package com.tpad.myshopify
 
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.tpad.myshopify.databinding.ActivityTotalBinding
+import android.net.NetworkInfo
+import android.content.Context.CONNECTIVITY_SERVICE
+import android.net.ConnectivityManager
+import android.widget.Toast
+
 
 class TotalActivity : AppCompatActivity() {
 
@@ -15,7 +21,20 @@ class TotalActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_total)
         binder = DataBindingUtil.setContentView(this, R.layout.activity_total)
 
-        GetDataAsync().execute(URL, null, null)
+        if(isConnected()) {
+            GetDataAsync().execute(URL, null, null)
+        }
+        else
+        {
+            Toast.makeText(this, getString(R.string.no_network), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun isConnected() : Boolean
+    {
+        val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting
     }
 
     class GetDataAsync: AsyncTask<String, Void, NameTotal>() {

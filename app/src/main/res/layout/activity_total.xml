@@ -32,7 +32,7 @@
             android:layout_below="@+id/customer_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="47dp"
-            android:text="@{Double.toString(customer.total)}"
+            android:text='@{"$ " + Double.toString(customer.total)}'
             android:textSize="36sp"
             tools:text="@string/customer_total" />
     </RelativeLayout>
